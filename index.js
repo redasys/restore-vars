@@ -2,16 +2,15 @@ const core = require('@actions/core')
 const replaceInFiles = require('replace-in-files');
 
 const options = {
-  files: () => {
-    return core.getInput('path-to-watch');
-  },
+  files: '',
   from: /jggveuruoh.execute-api.us-east-1.amazonaws.com/g,
   to: '${ApiEndpoint}'
 }
 
 function run() {
   try {
-    core.notice(core.getInput('path-to-watch'));
+    options.files = core.getInput('path-to-watch');
+    core.notice(options.files);
     replaceInFiles(options)
       .then(({ changedFiles, countOfMatchesByPaths }) => {
         core.notice('Modified files:', changedFiles);

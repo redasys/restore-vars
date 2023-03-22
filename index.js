@@ -1,6 +1,4 @@
 const core = require('@actions/core')
-const github = require('@actions/github')
-const exec = require('@actions/exec')
 const replaceInFiles = require('replace-in-files');
 
 const options = {

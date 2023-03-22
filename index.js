@@ -17,7 +17,7 @@ function run() {
         core.setOutput(`changedFiles, ${changedFiles}`)
         core.notice(`countOfMatchesByPaths, ${countOfMatchesByPaths}`);
         core.setOutput(`countOfMatchesByPaths, ${countOfMatchesByPaths}`)
-        core.notice(`options, ${Json.stringify(options)}`);
+        core.notice(`options, ${JSON.stringify(options)}`);
         core.setOutput("options", options);
 
       })

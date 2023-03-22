@@ -15,4 +15,4 @@ outputs:
     description: 'directory to scan'
 runs: 
   using: 'node16'
-  main: 'dist/index.js'
+  main: 'index.js'

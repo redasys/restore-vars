@@ -28,7 +28,7 @@ function run() {
   } catch {
     core.notice(`Error occurred: ${error}${JSON.stringify(error)}`);
   }
-  options.from = /"Stage": "Test"/g;
+  options.from = /'"Stage": "Test"'/g;
   options.to = '"Stage": "${stage}"';
   core.notice(`options: ${options}`);
   try {

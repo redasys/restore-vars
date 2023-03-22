@@ -10,6 +10,7 @@ const options = {
 }
 
 function run(){
+    core.notice(core.getInput('path-to-watch'));
     replaceInFiles(options)
   .then(({ changedFiles, countOfMatchesByPaths }) => {
     core.notice('Modified files:', changedFiles);

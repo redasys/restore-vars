@@ -13,12 +13,12 @@ function run() {
     core.notice(options.files);
     replaceInFiles(options)
       .then(({ changedFiles, countOfMatchesByPaths }) => {
-        core.notice('Modified files:', changedFiles);
-        core.setOutput("changedFiles", changedFiles)
-        core.notice('countOfMatchesByPaths', countOfMatchesByPaths);
-        core.setOutput("countOfMatchesByPaths", countOfMatchesByPaths)
-        core.notice('options', options);
-        core.setOutput("options", options)
+        core.notice(`Modified files:, ${changedFiles}`);
+        core.setOutput(`changedFiles, ${changedFiles}`)
+        core.notice(`countOfMatchesByPaths, ${countOfMatchesByPaths}`);
+        core.setOutput(`countOfMatchesByPaths, ${countOfMatchesByPaths}`)
+        core.notice(`options, ${Json.stringify(options)}`);
+        core.setOutput("options", options);
 
       })
     // .catch(error => {

@@ -4,14 +4,20 @@ const fs = require('fs')
 const options = {
   dir: JSON.parse(core.getInput('path')),
   from: JSON.parse(core.getInput('from')),
-  to: JSON.parse(core.getInput("to"));
-  
-  // from: /jggveuruoh.execute-api.us-east-1.amazonaws.com/g,
-  // to: '${ApiEndpoint}'
+  to: JSON.parse(core.getInput("to")),
+  default: {
+    from: [ 'jggveuruoh.execute-api.us-east-1.amazonaws.com', '"Stage: "test"', '"Stage: "prod"'],
+    to: '${ApiEndpoint}', '"Stage: "${stage}"', '"Stage: "${stage}"'
+  }
 }
 
 function run() {
   try {
+    if(options.from.length!=options.to.length){
+      core.notice('input mismatch')
+      options.to=options.default.to
+      options.from=options.default.from
+    }
     const files = fs.readdirSync(options.dir, (f)=>{
       return f.filter(x=>x.indexOf('json')>-1)
     });
@@ -19,9 +25,9 @@ function run() {
         core.notice(x);
        let txt = fs.readFileSync(x);
        options.from.map((r,i){
-          let arr = txt.split(from[i]);
-          let txt = txt.join(to[i]);          
-          core.notice(`${from[i]}: ${arr.length} replacement of ${to[i]}`)          
+          let arr = txt.split(from[i])
+          let txt = txt.join(to[i])       
+          core.notice(`${from[i]} ${arr.length} replacement of ${to[i]}`)          
        })
        core.notice('writing file')
        fs.writeFileSync(x, txt)     

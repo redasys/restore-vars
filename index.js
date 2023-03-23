@@ -19,9 +19,10 @@ function run() {
     //   options.from=options.default.from
     // }
     const files = fs.readdirSync(options.dir, (f)=>{
-      core.notice(f);
+      core.notice(f)
       return f.filter(x=>x.indexOf('json')>-1)
     });
+    core.notice(json.stringify(files))
     files.map(x=>{
         core.notice(x);
        let txt = fs.readFileSync(x);

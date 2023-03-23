@@ -7,7 +7,7 @@ const options = {
   to: JSON.parse(core.getInput("to")),
   default: {
     from: [ 'jggveuruoh.execute-api.us-east-1.amazonaws.com', '"Stage: "test"', '"Stage: "prod"'],
-    to: '${ApiEndpoint}', '"Stage: "${stage}"', '"Stage: "${stage}"'
+    to: ['${ApiEndpoint}', '"Stage: "${stage}"', '"Stage: "${stage}"']
   }
 }
 

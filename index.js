@@ -27,10 +27,10 @@ function run() {
         return x.indexOf('json') > -1
       })
     });
-    core.notice(json.stringify(files))
+    core.notice(files)
     files.map(x => {
       core.notice(x);
-      let txt = fs.readFileSync(`${options.dir}/${x}`);
+      let txt = fs.readFileSync(`deploy/StepFunctions/${x}`);
        options.from.map((r,i) => {
           let arr = txt.split(r)
           let txt = txt.join(to[i])       

@@ -24,10 +24,10 @@ function run() {
     files.map(x=>{
         core.notice(x);
        let txt = fs.readFileSync(x);
-       options.from.map((r,i){
-          let arr = txt.split(from[i])
+       options.from.map((r,i) => {
+          let arr = txt.split(r)
           let txt = txt.join(to[i])       
-          core.notice(`${from[i]} ${arr.length} replacement of ${to[i]}`)          
+          core.notice(`${r} ${arr.length} replacement of ${to[i]}`)          
        })
        core.notice('writing file')
        fs.writeFileSync(x, txt)     

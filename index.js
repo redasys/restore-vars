@@ -1,53 +1,33 @@
 const core = require('@actions/core')
-const replaceInFiles = require('replace-in-files');
+const fs = require('fs')
 
 const options = {
-  files: '',
+  dir: core.getInput('path'),
+  from: core.getInput('from'),
+  to: core.getInput("to");
+  
   // from: /jggveuruoh.execute-api.us-east-1.amazonaws.com/g,
   // to: '${ApiEndpoint}'
 }
 
 function run() {
   try {
-    options.files = core.getInput('path-to-watch')
-    options.from = core.getInput('from')
-    options.to = core.getInput('to')
-    core.notice(JSON.stringify(options));
-    replaceInFiles(options)
-      .then(({ changedFiles, countOfMatchesByPaths }) => {
-        core.notice(`Modified files:, ${JSON.stringify(changedFiles)}`)
-        core.setOutput(`changedFiles, ${JSON.stringify(changedFiles)}`)
-        core.notice(`countOfMatchesByPaths, ${JSON.stringify(countOfMatchesByPaths)}`)
-        core.setOutput(`countOfMatchesByPaths, ${JSON.stringify(countOfMatchesByPaths)}`)
-        core.notice(`options, ${JSON.stringify(options)}`)
-        core.setOutput("options", options)
-
-      })
-    // .catch(error => {
-    //   core.notice(`Error occurred: ${error}${error.toString()}`)
-    // });
+    const files = fs.readdirSync(options.dir, (f)=>{
+      return f.filter(x=>x.indexOf('json')>-1)
+    });
+    files.map(x=>{
+        core.notice(x);
+       let txt = fs.readFileSync(x);
+       options.from.map((r,i){
+          let arr = txt.split(from[i]);
+          let txt = txt.join(to[i]);          
+          core.notice(`${from[i]}: ${arr.length} replacement of ${to[i]}`);
+       })
+       core.notice('writing file');
+       fs.writeFileSync(x, txt);       
+    });
   } catch {
     core.notice(`Error occurred: ${error}${JSON.stringify(error)}`)
-  }
-  options.from = "\"Stage\": \"Test\""
-  options.to = "\"Stage\": \"${stage}\""
-  core.notice(`options: ${options}`)
-  try {
-    replaceInFiles(options)
-      .then(({ changedFiles, countOfMatchesByPaths }) => {
-        core.notice(`Modified files:, ${JSON.stringify(changedFiles)}`);
-        core.setOutput(`changedFiles, ${JSON.stringify(changedFiles)}`)
-        core.notice(`countOfMatchesByPaths, ${JSON.stringify(countOfMatchesByPaths)}`);
-        core.setOutput(`countOfMatchesByPaths, ${JSON.stringify(countOfMatchesByPaths)}`)
-        core.notice(`options, ${JSON.stringify(options)}`);
-        core.setOutput("options", options);
-
-      })
-    // .catch(error => {
-    //   core.notice(`Error occurred: ${error}${error.toString()}`);
-    // });
-  } catch {
-    core.notice(`Error occurred: ${error}${JSON.stringify(error)}`);
   }
 }
 

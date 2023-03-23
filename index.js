@@ -20,7 +20,7 @@ function run() {
     // }
     core.notice(`./ is ${fs.readdirSync("deploy")}`)
     core.notice(`./ is ${fs.readdirSync("deploy/StepFunctions")}`)
-    const files = fs.readdirSync(options.dir, (f) => {
+    const files = fs.readdirSync("deploy/StepFunctions", (f) => {
       core.notice(f)
       return f.filter(x => {
         core.notice(`x: ${x}`)

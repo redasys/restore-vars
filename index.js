@@ -2,9 +2,9 @@ const core = require('@actions/core')
 const fs = require('fs')
 
 const options = {
-  dir: core.getInput('path'),
-  from: core.getInput('from'),
-  to: core.getInput("to");
+  dir: JSON.parse(core.getInput('path')),
+  from: JSON.parse(core.getInput('from')),
+  to: JSON.parse(core.getInput("to"));
   
   // from: /jggveuruoh.execute-api.us-east-1.amazonaws.com/g,
   // to: '${ApiEndpoint}'

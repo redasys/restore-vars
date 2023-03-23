@@ -2,18 +2,14 @@ name: 'restore-step-fuction-vars'
 description: 'replace the build output with the original variables when a step function script is edited.'
 author: 'bob egan'
 inputs:
-  path-to-watch:  # id of input
+  dir:  # id of input
     description: 'directory its watching'
     required: true
     default: '../../../deploy/StepFunctions/*.json'
+  from: 
+  to:
 outputs:
-  changedFiles: # id of output
-    description: 'file that was processed'
-  countOfMatchesByPaths: # 
-    description: "what he said"
-  options: # 
-    description: 'directory to scan'
+  result: # the string
 runs: 
   using: 'node16'
-  main: '
-  index.js'
+  main: 'index.js'

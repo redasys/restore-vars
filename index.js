@@ -13,11 +13,11 @@ const options = {
 
 function run() {
   try {
-    if(options.from.length!=options.to.length){
-      core.notice('input mismatch')
-      options.to=options.default.to
-      options.from=options.default.from
-    }
+    // if(options.from.length!=options.to.length){
+    //   core.notice('input mismatch')
+    //   options.to=options.default.to
+    //   options.from=options.default.from
+    // }
     const files = fs.readdirSync(options.dir, (f)=>{
       return f.filter(x=>x.indexOf('json')>-1)
     });

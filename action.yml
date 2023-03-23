@@ -1,4 +1,4 @@
-name: 'restore-step-fuction-vars'
+name: 'restore-vars'
 description: 'replace the build output with the original variables when a step function script is edited.'
 author: 'bob egan'
 inputs:

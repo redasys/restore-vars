@@ -23,8 +23,8 @@ function run() {
           let txt = txt.join(to[i]);          
           core.notice(`${from[i]}: ${arr.length} replacement of ${to[i]}`);
        })
-       core.notice('writing file');
-       fs.writeFileSync(x, txt);       
+       core.notice('writing file')
+       fs.writeFileSync(x, txt)     
     });
   } catch {
     core.notice(`Error occurred: ${error}${JSON.stringify(error)}`)

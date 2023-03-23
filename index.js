@@ -2,9 +2,9 @@ const core = require('@actions/core')
 const fs = require('fs')
 
 const options = {
-  dir: JSON.parse(core.getInput('path')),
-  from: JSON.parse(core.getInput('from')),
-  to: JSON.parse(core.getInput("to")),
+  dir: core.getInput('path'),
+  from: core.getInput('from'),
+  to: core.getInput("to"),
   default: {
     from: [ 'jggveuruoh.execute-api.us-east-1.amazonaws.com', '"Stage: "test"', '"Stage: "prod"'],
     to: ['${ApiEndpoint}', '"Stage: "${stage}"', '"Stage: "${stage}"']

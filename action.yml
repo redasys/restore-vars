@@ -11,8 +11,8 @@ inputs:
   to: # another array
     required: true
 outputs:
-
   result: # the string
+    description: 'how things turned out'
 runs: 
   using: 'node16'
   main: 'index.js'

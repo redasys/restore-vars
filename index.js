@@ -21,11 +21,12 @@ function run() {
        options.from.map((r,i){
           let arr = txt.split(from[i]);
           let txt = txt.join(to[i]);          
-          core.notice(`${from[i]}: ${arr.length} replacement of ${to[i]}`)
+          core.notice(`${from[i]}: ${arr.length} replacement of ${to[i]}`)          
        })
        core.notice('writing file')
        fs.writeFileSync(x, txt)     
     });
+    core.setOutput(`success`)
   } catch {
     core.notice(`Error occurred: ${error}${JSON.stringify(error)}`)
   }

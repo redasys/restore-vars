@@ -34,7 +34,7 @@ function run() {
        fs.writeFileSync(x, txt)     
     });
     core.setOutput(`success`)
-  } catch (errpr) {
+  } catch (error) {
     core.notice(`Error occurred: ${error}${JSON.stringify(error)}`)
   }
 }

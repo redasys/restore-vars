@@ -19,6 +19,7 @@ function run() {
     //   options.from=options.default.from
     // }
     const files = fs.readdirSync(options.dir, (f)=>{
+      core.notice(f);
       return f.filter(x=>x.indexOf('json')>-1)
     });
     files.map(x=>{
@@ -33,7 +34,7 @@ function run() {
        fs.writeFileSync(x, txt)     
     });
     core.setOutput(`success`)
-  } catch {
+  } catch (errpr) {
     core.notice(`Error occurred: ${error}${JSON.stringify(error)}`)
   }
 }

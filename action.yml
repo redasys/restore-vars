@@ -6,9 +6,12 @@ inputs:
     description: 'directory its watching'
     required: true
     default: '../../../deploy/StepFunctions/*.json'
-  from: 
-  to:
+  from: # an array
+    required: true
+  to: # another array
+    required: true
 outputs:
+
   result: # the string
 runs: 
   using: 'node16'

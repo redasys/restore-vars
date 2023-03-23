@@ -18,6 +18,7 @@ function run() {
     //   options.to=options.default.to
     //   options.from=options.default.from
     // }
+    core.notice(`./ is ${fs.readdirSync("./")}`)
     const files = fs.readdirSync(options.dir, (f) => {
       core.notice(f)
       return f.filter(x => {

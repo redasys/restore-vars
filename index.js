@@ -19,7 +19,7 @@ function run() {
       core.notice('input mismatch loading defaults')
       options.dir = options.default.dir
       options.to = options.default.to
-      options.from = options.default.from
+      options.from = options.default.from //blah
     }
     core.notice(options.from)
 

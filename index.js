@@ -6,7 +6,7 @@ const options = {
   from: core.getInput('from'),
   to: core.getInput("to"),
   default: {
-    dir = `deploy/StepFunctions`,
+    dir: `deploy/StepFunctions`,
     from: ['jggveuruoh.execute-api.us-east-1.amazonaws.com', '"Stage": "prod"', '"Stage": "test"', 'QA_', 'PROD_'],
     to: ['${ApiEndpoint}', '"Stage": "${stage}"', '"Stage": "${stage}"', '${environment}', '${environment}']
   }

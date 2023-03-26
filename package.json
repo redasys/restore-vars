@@ -12,5 +12,8 @@
   "dependencies": {
     "@actions/core": "^1.10.0",
     "replace-in-files": "^3.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
   }
 }

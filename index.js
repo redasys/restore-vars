@@ -7,8 +7,8 @@ const options = {
   to: core.getInput("to"),
   default: {
     dir: `deploy/StepFunctions`,
-    to: ['jggveuruoh.execute-api.us-east-1.amazonaws.com', '"Stage": "prod"', '"Stage": "test"', 'QA_', 'PROD_'],
-    from: ['${ApiEndpoint}', '"Stage": "${stage}"', '"Stage": "${stage}"', '${environment}', '${environment}']
+    from: ['jggveuruoh.execute-api.us-east-1.amazonaws.com', '"Stage": "prod"', '"Stage": "test"', 'QA_', 'PROD_'],
+    to: ['${ApiEndpoint}', '"Stage": "${stage}"', '"Stage": "${stage}"', '${environment}', '${environment}']
   }
 }
 
@@ -38,8 +38,6 @@ function run() {
 
       const jsn = txt
 
-      core.notice(jsn.substr(0, 100))
-
       options.from.map((r, i) => {
         core.notice(`from: ${r} to: ${options.to[i]}`)
         let arr = jsn.split(r)
@@ -53,7 +51,7 @@ function run() {
         core.notice(`${r} ${arr.length} replacement of ${r}`)
       })
 
-      core.notice('writing file')
+      core.notice(`writing file: ${options.dir}/${x}`)
       fs.writeFileSync(`${options.dir}/${x}`, txt)
       //}, 2000)
     })
